@@ -10,23 +10,26 @@
         TrackBar1.DataBindings.Add(New Binding("Value", Me, "NV", True, DataSourceUpdateMode.OnPropertyChanged))
         NumericUpDown1.DataBindings.Add(New Binding("Value", Me, "TV", True, DataSourceUpdateMode.OnPropertyChanged))
 
+        TrackBar1.Maximum = NumericUpDown1.Maximum
+        TrackBar1.Value = TrackBar1.Maximum / 2
+        NumericUpDown1.Value = NumericUpDown1.Maximum / 2
     End Sub
 
     Property NV As Decimal
         Get
-            Return 10 - NumericUpDown1.Value
+            Return TrackBar1.Value
         End Get
         Set(value As Decimal)
-            NumericUpDown1.Value = 10 - value
+            NumericUpDown1.Value = NumericUpDown1.Maximum - value
         End Set
     End Property
 
     Property TV As Decimal
         Get
-            Return 10 + TrackBar1.Value
+            Return NumericUpDown1.Value
         End Get
         Set(value As Decimal)
-            TrackBar1.Value = 10 - value
+            TrackBar1.Value = NumericUpDown1.Maximum - value
         End Set
     End Property
 
